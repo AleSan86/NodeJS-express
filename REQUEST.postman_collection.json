@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "3c0f67bc-4013-464c-bc28-a879dbf08a6e",
+		"name": "MERN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22367499"
+	},
+	"item": [
+		{
+			"name": "GET Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Products por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/products/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"5"
+					]
+				},
+				"description": "Get products por ID"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Harina\",\r\n    \"description\":\"0000\",\r\n    \"code\":\"AKHFIUR86\",\r\n    \"price\":250,\r\n    \"status\":true,\r\n    \"stock\":2500,\r\n    \"thunbnails\":[]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/products/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Product por ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"producto modificado\",\r\n    \"description\": \"Este es un producto actualizado\",\r\n    \"price\": 2000,\r\n    \"thumbnail\": \"Sin imagen\",\r\n    \"code\": \"25\",\r\n    \"stock\": 2500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/products/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"10"
+					]
+				},
+				"description": "PUT de products por id"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE por ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/products/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Carts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/carts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Cart by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/carts/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"products\": {\r\n        \"title\":\"Arroz\",\r\n        \"description\":\"Japonés, para sushi\",\r\n        \"code\":\"AKHFIUR86\",\r\n        \"price\":500,\r\n        \"status\":true,\r\n        \"stock\":25,\r\n        \"thunbnails\":[]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/carts/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD Product to Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/carts/:cid/products/:pid",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						":cid",
+						"products",
+						":pid"
+					],
+					"variable": [
+						{
+							"key": "cid",
+							"value": "2"
+						},
+						{
+							"key": "pid",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
