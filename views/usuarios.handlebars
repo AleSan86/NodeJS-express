@@ -1,0 +1,47 @@
+<div class="m-auto col-8">
+  <h4 class="mt-5 text-center">Listado de usuarios</h4>
+  <table class="table table-hover table-striped">
+    <caption>
+      {{#each links}}
+      <a href='{{this.href}}'>{{this.label}}</a>
+      {{/each}}
+    </caption>
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Sexo</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr {{#each usuarios}}>
+        <td>{{this.firstName}}</td>
+        <td>{{this.lastName}}</td>
+        <td>{{this.gender}}</td>
+      </tr {{/each}}>
+    </tbody>
+  </table>
+</div>
+  
+{{!-- <div>
+  <h4>Listado de usuarios</h4>
+  {{#each usuarios}}
+    <div>
+      <p>Nombre: {{this.firstName}}, {{this.lastName}}</p>
+      <p>Email: {{this.email}}</p>
+      <p>Sexo: {{this.gender}}</p>
+    </div>
+  {{/each}}
+  {{#if pagination.hasPrevPage}}
+    <a style='font-size: 20;' href='/users/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
+  {{/if}}
+  <a style='font-size: 20;' href='#'>{{pagination.page}}</a>
+  {{#if pagination.hasNextPage}}
+    <a style='font-size: 20;' href='/users/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
+  {{/if}}
+  <br />
+  <br />
+  {{#each links}}
+    <a href='{{this.href}}'>{{this.label}}</a>
+  {{/each}}
+</div> --}}
