@@ -10,34 +10,32 @@
       <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
-        <th scope="col">Sexo</th>
+        <th scope="col">eMail</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
       <tr {{#each usuarios}}>
         <td>{{this.firstName}}</td>
         <td>{{this.lastName}}</td>
-        <td>{{this.gender}}</td>
+        <td>{{this.email}}</td>
       </tr {{/each}}>
     </tbody>
   </table>
 </div>
   
 {{!-- <div>
-  <h4>Listado de usuarios</h4>
+  <h4>LISTADO DE USUARIOS</h4>
   {{#each usuarios}}
     <div>
-      <p>Nombre: {{this.firstName}}, {{this.lastName}}</p>
-      <p>Email: {{this.email}}</p>
-      <p>Sexo: {{this.gender}}</p>
+      <p>nombre {{this.firstName}}, edad {{this.email}}</p>
     </div>
   {{/each}}
   {{#if pagination.hasPrevPage}}
-    <a style='font-size: 20;' href='/users/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
+    <a style='font-size: 20;' href='/users/?page={{pagination.prevPage}}'>←{{pagination.prevPage}}</a>
   {{/if}}
   <a style='font-size: 20;' href='#'>{{pagination.page}}</a>
   {{#if pagination.hasNextPage}}
-    <a style='font-size: 20;' href='/users/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
+    <a style='font-size: 20;' href='/users/?page={{pagination.nextPage}}'>→{{pagination.nextPage}}</a>
   {{/if}}
   <br />
   <br />

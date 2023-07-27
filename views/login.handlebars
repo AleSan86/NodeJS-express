@@ -1,0 +1,28 @@
+<div class="card m-auto col-8">
+  <div class="card-header text-center alert alert-primary">
+    Iniciar sesión
+  </div>
+  <div class="card-body">
+    <form action="/auth/login" method="POST">
+    {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+      <p class="card-text text-center" style="color: red;">Ambos campos son obligatorios</p>
+      <div class="mb-3">
+        <label for="email" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" id="email" placeholder="ingrese su email">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" placeholder="ingrese su contraseña">
+      </div>
+      <input type="submit" class="btn btn-primary btn-md" value="Ingresar">
+    </form>
+  </div>
+  <div class="card-footer text-center">
+    <div class="mb-2">
+      <a href="/auth/github" type="button" class="btn btn-dark">Entrar con GitHub</a>
+    </div>
+    <div class="mb-2">
+      <a href="/auth/register" type="button" class="btn btn-dark">No tengo cuenta - ¡Registrarte!</a>
+    </div>
+  </div>
+</div>
