@@ -15,7 +15,6 @@ const schema = new Schema({
   },
   email: {
     type: String,
-    required: true,
     max: 100,
     unique: true,
   },
@@ -24,7 +23,6 @@ const schema = new Schema({
   },
   password:{
     type: String,
-    required: true,
     max: 100,
   },
   cart:{

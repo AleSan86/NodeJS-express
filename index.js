@@ -8,8 +8,7 @@ import { usersRouter } from './routes/users.router.js';
 import { productsRouter } from './routes/products.router.js';
 import { connectMongo } from './DAO/db.js';
 import { authRouter } from './routes/auth.router.js';
-import { iniPassport } from './config/passport.config.js';
-//import { initializePassport, passportCall }  from './config/passport.config.js'
+import { initializePassport } from './config/passport.config.js';
 import { sessionsRouter } from './routes/sessions.router.js';
 import { viewsRouter } from './routes/views.router.js';
 import { usersViewRouter } from './routes/users.view.js';
@@ -31,16 +30,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(session({
   secret:'claveSecreta123',
-    resave:true,
-    saveUninitialized:true
+  resave:true,
+  saveUninitialized:true
 }))
 
 //PASSPORT
 app.use(passport.initialize());
 app.use(passport.session())
-iniPassport();
-// app.use(passport.initialize())
-// initializePassport()
+initializePassport();
 
 //Config Views
 app.engine('handlebars', handlebars.engine());

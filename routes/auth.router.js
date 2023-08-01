@@ -2,7 +2,6 @@ import express from 'express';
 import { isAdmin, isUser } from '../middlewares/auth.js';
 import passport from 'passport';
 import { Router } from "express";
-import jwt from 'jsonwebtoken';
 //import { passportCall, authorization } from '../config/passport.config.js';
 
 export const authRouter = express.Router();
@@ -12,18 +11,19 @@ export const routerGitHub = new Router()
 authRouter.get('/github',
   passport.authenticate('auth-github', { scope: [ 'user:email' ], session: false }));
 
-  authRouter.get('/github/callback', 
-passport.authenticate('auth-github', { scope: [ 'user:email' ], session: false }),
-function(req, res) {
-// Successful authentication, redirect home.
-//res.redirect('/');
-res.send(JSON.stringify(req.user))
+authRouter.get('/github/callback', 
+  passport.authenticate('auth-github', { scope: [ 'user:email' ], session: false }),
+  function(req, res) {
+    //TODO Pasar datos a la vista del perfil
+  return res.render('perfil', (req.user))
 });
 
+//GET Register
 authRouter.get('/register', (req, res) => {
   return res.render('register', {});
 });
 
+//POST Register
 authRouter.post('/register', passport.authenticate('register', { failureRedirect: '/auth/failregister' }), (req, res) => {
   if (!req.user) {
     return res.json({ error: 'Error' });
@@ -38,15 +38,17 @@ authRouter.get('/failregister', async (req, res) => {
   return res.json({ error: 'Hubo un fallo en el registro' });
 });
 
+//GET Login
 authRouter.get('/login', (req, res) => {
   return res.render('login', {});
 });
 
+//POST Login
 authRouter.post('/login', passport.authenticate('login', { failureRedirect: '/auth/faillogin' }), async (req, res) => {
   const { username, password } = req.body;
 
   try {
-      const user = await userModel.findOne({ username });
+      const user = await UserModel.findOne({ username });
 
       if (user && user.password === password) {
           req.session.firstName = user.firstName;
@@ -60,22 +62,13 @@ authRouter.post('/login', passport.authenticate('login', { failureRedirect: '/au
           }
       return res.redirect('/profile')
   } else {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: "Error" });
   }
   } catch (e) {
       console.log(e);
       return res.status(500).json({ message: error.message });
     }
 })
-
-// authRouter.post('/login', passport.authenticate('login', { failureRedirect: '/auth/faillogin' }), async (req, res) => {
-//   if (!req.user) {
-//     return res.json({ error: 'Credenciales inválidas' });
-//   }
-//   req.session.user = { _id: req.user._id, email: req.user.email, firstName: req.user.firstName, lastName: req.user.lastName, isAdmin: req.user.isAdmin };
-// console.log(req.session.user)
-//   return res.json({ msg: 'ok', payload: req.user });
-// });
 
 authRouter.get('/faillogin', async (req, res) => {
   return res.json({ error: 'Fallo en login' });
@@ -100,10 +93,7 @@ authRouter.get('/administracion', isUser, isAdmin, (req, res) => {
 });
 
 
-
-
-
-//HECHO EN CLASE (NO FUNCIONA)
+//HECHO EN CLASE
 
 // authRouter.post('/login', (req, res) => {
 //   if(req.body.username == 'alesan86@gmail.com' && req.body.password == '123456'){

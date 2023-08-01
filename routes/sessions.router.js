@@ -10,6 +10,7 @@ sessionsRouter.get('/githubcallback',
   passport.authenticate('github', { scope: [ 'user:email' ], session: false }), 
   (req, res) => {req.session.user = req.user;
   // Successful authentication, redirect home.
+  req.session.user = req.user;
   res.redirect('/');
 });
 
