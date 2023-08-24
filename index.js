@@ -4,8 +4,6 @@ import handlebars from 'express-handlebars';
 import passport from 'passport';
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
-import { usersRouter } from './routes/users.router.js';
-import { productsRouter } from './routes/products.router.js';
 import { connectMongo } from './DAO/db.js';
 import { authRouter } from './routes/auth.router.js';
 import { initializePassport } from './config/passport.config.js';
@@ -14,6 +12,9 @@ import { viewsRouter } from './routes/views.router.js';
 import { usersViewRouter } from './routes/users.view.js';
 import { productsViewRouter } from './routes/products.view.js';
 import { __dirname} from './utils.js';
+
+import { productsRouter } from './routes/products.router.js';
+import { usersRouter } from './routes/users.router.js';
 
 connectMongo();
 
@@ -48,11 +49,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //CONFIG RUTAS
 app.use('/', viewsRouter);
 app.use('/api/sessions', sessionsRouter);
-app.use('/api/products', productsRouter);
-app.use('/api/users', usersRouter);
 app.use('/users', usersViewRouter);
 app.use('/products', productsViewRouter);
 app.use('/auth', authRouter);
+//CONFIG RUTAS CONTROLADORES
+app.use('/api/products', productsRouter);
+app.use('/api/users', usersRouter);
 
 //Session
 app.get('/sessionSet', (req, res) => {

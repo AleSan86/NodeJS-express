@@ -9,14 +9,24 @@ export const routerGitHub = new Router()
 
 //GIT
 authRouter.get('/github',
-  passport.authenticate('auth-github', { scope: [ 'user:email' ], session: false }));
+  passport.authenticate('auth-github', { scope: ['user:email'], session: true }));
 
-authRouter.get('/github/callback', 
-  passport.authenticate('auth-github', { scope: [ 'user:email' ], session: false }),
-  function(req, res) {
-    //TODO Pasar datos a la vista del perfil
-  return res.render('perfil', (req.user))
-});
+authRouter.get('/github/callback',
+  passport.authenticate('auth-github', { scope: ['user:email'], session: true }),
+  function (req, res) {
+      //Guarda en la session los datos del user 
+   //GUARDAR LOS MISMOS DATOS EN AMBAS ESTRATEGIAS
+    req.session.user = {
+      _id: req.user._id,
+      email: req.user.email,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      isAdmin: req.user.role== "admin" ? true : false
+    };
+ //LUEGO DE REDIRIGIRLO A ESTA RUTA 
+    return res.redirect('/auth/profile')
+ 
+  });
 
 //GET Register
 authRouter.get('/register', (req, res) => {
@@ -24,14 +34,26 @@ authRouter.get('/register', (req, res) => {
 });
 
 //POST Register
-authRouter.post('/register', passport.authenticate('register', { failureRedirect: '/auth/failregister' }), (req, res) => {
+authRouter.post('/register', passport.authenticate('register', { failureRedirect: '/auth/failregister' }),
+ (req, res) => {
   if (!req.user) {
     return res.json({ error: 'Error' });
   }
-  req.session.user = { _id: req.user._id, email: req.user.email, firstName: req.user.firstName, lastName: req.user.lastName, isAdmin: req.user.isAdmin };
+   //Guarda en la session los datos del user 
+   //GUARDAR LOS MISMOS DATOS EN AMBAS ESTRATEGIAS
+  req.session.user = {
+    _id: req.user._id,
+    email: req.user.email,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
+    password: req.user.password,
+    age: req.user.age,
+    isAdmin: req.user.role== "admin" ? true : false
+  };
 
-  return res.json({ msg: 'ok', payload: req.user });
- // return res.redirect('/');
+  //LUEGO DE REDIRIGIRLO A ESTA RUTA 
+  return res.redirect('/auth/profile')
+
 });
 
 authRouter.get('/failregister', async (req, res) => {
@@ -44,30 +66,28 @@ authRouter.get('/login', (req, res) => {
 });
 
 //POST Login
-authRouter.post('/login', passport.authenticate('login', { failureRedirect: '/auth/faillogin' }), async (req, res) => {
+authRouter.post('/login', passport.authenticate('login', { failureRedirect: '/auth/faillogin' }),
+async (req, res) => {
   const { username, password } = req.body;
 
   try {
-      const user = await UserModel.findOne({ username });
+       //Guarda en la session los datos del user 
+   //GUARDAR LOS MISMOS DATOS EN AMBAS ESTRATEGIAS
+      req.session.user = {
+      _id: req.user._id,
+      email: req.user.email,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      isAdmin: req.user.role== "admin" ? true : false
+    };
+  
+ //LUEGO DE REDIRIGIRLO A ESTA RUTA 
+    return res.redirect('/auth/profile')
 
-      if (user && user.password === password) {
-          req.session.firstName = user.firstName;
-          req.session.email = user.email;
-          req.session.admin = false;
-          if (
-            user.username === "alesan86@gmail.com" &&
-            user.password === "123456"
-          ) {
-            req.session.admin = true;
-          }
-      return res.redirect('/profile')
-  } else {
-      return res.status(400).json({ message: "Error" });
-  }
   } catch (e) {
-      console.log(e);
-      return res.status(500).json({ message: error.message });
-    }
+    console.log(e);
+    return res.status(500).json({ message: e.message });
+  }
 })
 
 authRouter.get('/faillogin', async (req, res) => {
@@ -83,9 +103,10 @@ authRouter.get('/logout', (req, res) => {
   });
 });
 
-authRouter.get('/perfil', isUser, (req, res) => {
+ // Cambiar la ruta   a /profile y luego de iniciar sesion o registrarse redirigirlo a este endpoint
+authRouter.get('/profile', isUser, (req, res) => {
   const user = req.session.user;
-  return res.render('perfil', { user: user });
+  return res.render('profile', { user: user });
 });
 
 authRouter.get('/administracion', isUser, isAdmin, (req, res) => {

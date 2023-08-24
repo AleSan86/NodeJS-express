@@ -41,15 +41,18 @@ export function initializePassport() {
     }
   }))
 
-  passport.use( 'login', new LocalStrategy({ usernameField: 'email' }, 
-    async (username, password, done) => {
+  passport.use( 'login', new LocalStrategy({ usernameField: 'email',  passReqToCallback: true, }, 
+    async (req, username, password, done) => {
       try {
+        //const { email, password } = req.body;
+        console.log("body", req.body)
         const user = await UserModel.findOne({ email: username });
         if (!user) {
-          console.log('Usuario no encontrado (email) ' + username);
+          console.log('Usuario no encontrado con email ' + username);
           return done(null, false);
         }
-        if (!isValidPassword(password, user.password)) {
+        //console.log('Contraseña incorrecta afuera',isValidPassword( user.password ,password));
+        if (!isValidPassword( password,user.password )) {
           console.log('Contraseña incorrecta');
           return done(null, false);
         }
@@ -61,15 +64,14 @@ export function initializePassport() {
     })
   );
 
-  passport.use('register', new LocalStrategy({
-        passReqToCallback: true,
-        usernameField: 'email',
-      }, async (req, username, password, done) => {
+  passport.use('register', new LocalStrategy({ usernameField: 'email', passReqToCallback: true, },
+   async (req, username, password, done) => {
         try {
           const { email, firstName, lastName } = req.body;
+          console.log("body", req.body)
           let user = await UserModel.findOne({ email: username });
           if (user) {
-            console.log('El usuario ya existe');
+            console.log('Ya existe un usuario registrado con el mail: ' + email);
             return done(null, false);
           }
 
@@ -80,6 +82,12 @@ export function initializePassport() {
             isAdmin: false,
             password: createHash(password),
           };
+          //en este if le agregas el role admin si el email es el que decia en el entregable.
+
+          if( email== "adminCoder@coder.com" && password == "adminCod3r123"){
+            newUser.role = "admin"
+         }
+            
           let userCreated = await UserModel.create(newUser);
           console.log(userCreated);
           console.log('Registro de usuario exitoso');
@@ -123,23 +131,3 @@ export function initializePassport() {
     }
 ))
 }
-
-// export function passportCall(strategy) {
-//     return (req, res, next) => {
-//         passport.authenticate(strategy, function(e, info, user){
-//         if(e) return next(e)
-//         if(!user){
-//             return res.status(401).send({e: info.message ? info.message : info.toString()})
-//         }
-//         req.user = user
-//         next()
-//         })(req, res, next)
-//     }
-// }
-
-// export function authorization(role) {
-//     return async (req, res, next) => {
-//         if(!req.user) return res.status(401).send({e: "Unauthorized"})
-//         if(req.user.role != role) return res.status(403).send({e: "Usuario sin permiso"})
-//     }
-// }

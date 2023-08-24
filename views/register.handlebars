@@ -6,19 +6,19 @@
     <form action="/auth/register" method="POST">
       <div class="mb-3">
           <label for="firstName" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="firstName" placeholder="Nombre">
+          <input type="text"name="firstName"  class="form-control" id="firstName" placeholder="Nombre" required>
       </div>
       <div class="mb-3">
           <label for="lastName" class="form-label">Apellido</label>
-          <input type="text" class="form-control" id="lastName" placeholder="Apellido">
+          <input type="text"name="lastName"  class="form-control" id="lastName" placeholder="Apellido" required>
       </div>
       <div class="mb-3">
           <label for="email" class="form-label">Em@il</label>
-          <input type="email" class="form-control" id="email" placeholder="email">
+          <input type="email" name="email"class="form-control" id="email" placeholder="email" required>
       </div>
       <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="password">
+          <input type="password" name="password" class="form-control" id="password" required>
       </div>
       <input type="submit" class="btn btn-primary" value="¡Registrarme!">
     </form>

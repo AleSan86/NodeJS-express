@@ -1,5 +1,5 @@
 import { connect } from 'mongoose';
-import { UserModel } from './models/users.model.js';
+//import { UserModel } from '../DAO/models/users.model.js';
 import { ProductModel } from './models/products.model.js';
 import { CartModel } from './models/carts.model.js';
 
@@ -8,25 +8,25 @@ export async function connectMongo() {
       await connect(`mongodb+srv://AleSan86:ContraseñaSegura123@codere-commerce.4xgrna2.mongodb.net/coderMongoDb`);
       console.log('Conectado a Mongo Atlas');
 
-      let usuarios = await UserModel.paginate({limit:5,page:1})
-      let productos = await ProductModel.paginate({limit:5,page:1})
-      let carritos = await CartModel.paginate({limit:5,page:1})
-      console.log(usuarios, productos, carritos);
+      // let usuarios = await UserModel.paginate({limit:5,page:1})
+      // let productos = await ProductModel.paginate({limit:5,page:1})
+      // let carritos = await CartModel.paginate({limit:5,page:1})
+      // console.log(usuarios, productos, carritos);
 
-      const response = {
-        status: "success" | "error",
-        payload: [{}],
-        limit: Number,
-        totalPages: Number,
-        page: Number,
-        pagingCounter: Number,
-        hasPrevPage: Boolean,
-        hasNextPage: Boolean,
-        prevPage: null,
-        nextPage: null,
-        prevLink: String,
-        nextLink: String,
-      };
+      // const response = {
+      //   status: "success" | "error",
+      //   payload: [{}],
+      //   limit: Number,
+      //   totalPages: Number,
+      //   page: Number,
+      //   pagingCounter: Number,
+      //   hasPrevPage: Boolean,
+      //   hasNextPage: Boolean,
+      //   prevPage: null,
+      //   nextPage: null,
+      //   prevLink: String,
+      //   nextLink: String,
+      // };
       
       // console.log(response)
 

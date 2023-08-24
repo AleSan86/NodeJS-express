@@ -1,0 +1,20 @@
+<div class="card m-auto col-8 mt-5">
+  <div class="card-header text-center alert alert-primary">
+    <h5 class="card-title">Bienvenido</h5> 
+  </div>
+  <div class="card-body">
+    <div class="mb-3">
+        <label for="email" class="form-label"><h3>{{user.lastName}}, {{user.firstName}}</h3></label>
+      </div>
+    
+      <div class="mb-3">
+        <label for="email" class="form-label">Estas registrado como: <b>{{user.email}}</b></label>
+      </div>
+      {{!-- <a href='/auth/administracion'>Ver datos<a> --}}
+  </div>
+  <div class="card-footer text-center">
+    <div class="mb-2">
+      <a href="/auth/logout" type="button" class="btn btn-danger">Salir</a>
+    </div>
+  </div>
+</div>
