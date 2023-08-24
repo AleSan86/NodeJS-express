@@ -12,6 +12,8 @@ import { viewsRouter } from './routes/views.router.js';
 import { usersViewRouter } from './routes/users.view.js';
 import { productsViewRouter } from './routes/products.view.js';
 import { __dirname} from './utils.js';
+import config from './config/config.js'
+console.log(config);
 
 import { productsRouter } from './routes/products.router.js';
 import { usersRouter } from './routes/users.router.js';

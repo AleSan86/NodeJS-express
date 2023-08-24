@@ -1,5 +1,5 @@
 import { connect } from 'mongoose';
-//import { UserModel } from '../DAO/models/users.model.js';
+import { UserModel } from './models/users.model.js';
 import { ProductModel } from './models/products.model.js';
 import { CartModel } from './models/carts.model.js';
 
