@@ -8,21 +8,16 @@ const schema = new Schema({
     },
     products: [
         {
-        name: String,
-        description: String,
-        price: Number
-        }
+        idProduct: { type: Schema.Types.ObjectId, ref: 'products' },
+        quantity: { type: Number }, 
+        _id: false 
+        },
+        { versionKey: false }
     ],
     modifiedOn: {
         type: Date,
         default: Date.now
     },
-    // cart: {
-    //     cart: {
-    //         type: mongoose.Schema.ObjectId,
-    //         ref: 'Cart'
-    //     }
-    // }
 },
     { timestamps: true }
 )

@@ -81,16 +81,19 @@ let users= [
 
 //Array de productos
 let products= [
-  {"name":"Vino","marca":"Alaris","description":"Malbec joven","price":2500},
-  {"name":"TV","marca":"Samsung","description":"40 pulgadas","price":52500},
-  {"name":"Mochila","marca":"SOM","description":"Tela resistente","price":10200},
-  {"name":"Libro de tejido","marca":"Tejido Amigurumis","description":"Número único - Anuario","price":5000},
-  {"name":"Jabón en polvo","marca":"Ala","description":"Paquete de 1Kg.","price":1850}
+  {"title":"Vino","description":"Malbec joven","price":2500,"thumbnail":"","code": "rty654","stock": 10,"status": true,"category": "Almacen"},
+  {"title":"TV","description":"40 pulgadas","price":52500,"thumbnail":"","code": "qwe345","stock": 1000,"status": true,"category": "Tecnologia"},
+  {"title":"Mochila","description":"Tela resistente","price":10200,"thumbnail":"","code": "vbn987","stock": 10,"status": true,"category": "Ropa"},
+  {"title":"Libro de tejido","description":"Número único - Anuario","price":5000,"thumbnail":"","code": "lkj678","stock": 100,"status": true,"category": "Libreria"},
+  {"title":"Jabón en polvo","description":"Paquete de 1Kg.","price":1850,"thumbnail":"","code": "mnb234","stock": 10,"status": true,"category": "Almacen"},
+  {"title":"Radio AM/FM","description":"Analógica/Digital","price":2500,"thumbnail":"","code": "qwa345","stock": 50,"status": true,"category": "Tecnologia"},
+  {"title":"Remera","description":"Tela resistente americana - calidad asegurada","price":18200,"thumbnail":"","code": "vbn999","stock": 20,"status": true,"category": "Ropa"},
+  {"title":"Estecas para escultura","description":"Material de metal y madera","price":500,"thumbnail":"","code": "lkj666","stock": 10,"status": true,"category": "Libreria"}
 ]
 
 //Array de carts
 let carts= [
-  {},
+  [{"id":2,"products":[{"id":10,"quantity":3},{"id":1,"quantity":5}]},{"id":3,"products":[]}],
   {},
   {}
 ]

@@ -12,11 +12,12 @@ import { viewsRouter } from './routes/views.router.js';
 import { usersViewRouter } from './routes/users.view.js';
 import { productsViewRouter } from './routes/products.view.js';
 import { __dirname} from './utils.js';
-import config from './config/config.js'
-console.log(config);
 
 import { productsRouter } from './routes/products.router.js';
 import { usersRouter } from './routes/users.router.js';
+import { cartsRouter } from './routes/carts.router.js';
+
+import { mocksRouter } from './routes/mocks.router.js';
 
 connectMongo();
 
@@ -57,6 +58,10 @@ app.use('/auth', authRouter);
 //CONFIG RUTAS CONTROLADORES
 app.use('/api/products', productsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/carts', cartsRouter);
+//MOCK
+app.use('/products', mocksRouter)
+app.use('/users', mocksRouter)
 
 //Session
 app.get('/sessionSet', (req, res) => {

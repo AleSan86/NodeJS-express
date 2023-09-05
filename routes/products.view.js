@@ -3,11 +3,10 @@ import { ProductService } from '../services/products.services.js';
 const Service = new ProductService();
 
 export const productsViewRouter = express.Router();
+
 productsViewRouter.get('/', async (req, res) => {
   const { page, limit } = req.query;
   const dataProducts = await Service.getAll(page, limit);
-  
-  // console.log(dataProducts)
 
  let productos = dataProducts.docs.map((item) => {
     return { name: item.name, description: item.description, price: item.price };

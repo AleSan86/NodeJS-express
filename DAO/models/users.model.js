@@ -1,38 +1,16 @@
 import { Schema, model } from 'mongoose';
 import monsoosePaginate from 'mongoose-paginate-v2';
-import bcrypt from 'bcrypt';
 
 const schema = new Schema({
-  firstName: {
-    type: String,
-    required: true,
-    max: 100,
-  },
-  lastName: {
-    type: String,
-    required: true,
-    max: 100,
-  },
-  email: {
-    type: String,
-    max: 100,
-    unique: true,
-  },
-  age: {
-    type: Number,
-  },
-  password:{
-    type: String,
-    max: 100,
-  },
-  cart:{
-    cart: {},
-  },
-  role: {
-    type: String,
-    default: 'user',
-  },
-});
+  firstName: {type: String, required: true, max: 100,},
+  lastName: {type: String, required: true,max: 100,},
+  email: {type: String, required: true, max: 100, unique: true,},
+  age: {type: Number,},
+  password:{type: [String, null], max: 100,},
+  cart:{type: String, required: false},
+  role: {type: String, default: 'user',},
+  }, {versionKey: false}
+);
 
 // Método alternativo para Hashear password
 
