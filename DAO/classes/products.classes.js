@@ -10,11 +10,11 @@ export class ProductClass {
   async getAll(page, limit, sort, query) {
     // const products = await ProductModel.paginate({}, { limit:limit || 5, page: page || 1 });
     // return products;
-    const options = {page: page || 1, limit: limit || 4,sort: sort || "asc"};
+    const options = {page: page || 1, limit: limit || 4, sort: sort || "asc"};
     const queryOptions = {};
     if(query){queryOptions.$text = {$search: query}};
     if(sort){options.sort = {price: sort}};
-    let queryResult = await ProductModel.paginate(queryOptions,options);
+    let queryResult = await ProductModel.paginate(queryOptions, options);
 
     return queryResult;
   }

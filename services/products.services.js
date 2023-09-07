@@ -24,6 +24,7 @@ export class ProductService {
       const queryResult = await ProductMethods.getAll(page, limit, sort, query)
       const {docs, ...rest } = queryResult;
       let products = docs.map((doc)=>{
+        console.log(products);
         return {
             title: doc.title,
             description: doc.description,
@@ -48,9 +49,11 @@ export class ProductService {
 
   async getById(_id) {
     try {
-      const product = await ProductMethods.findOne(_id );
+      console.log(_id, product);
+      const product = await ProductMethods.find(_id );
       return product;
     } catch (error) {
+      console.log(_id, product);
       throw new Error(error.message);
     }
   }

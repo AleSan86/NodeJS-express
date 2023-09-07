@@ -19,7 +19,7 @@ import { cartsRouter } from './routes/carts.router.js';
 
 import { mocksRouter } from './routes/mocks.router.js';
 
-connectMongo();
+//connectMongo();
 
 const app = express();
 
