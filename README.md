@@ -18,7 +18,7 @@ mongoose -- mongoose-paginate-v2 -- nodemailer -- handlebars -- bcrypt
 ## Extras
 <table>
     <th>Logger</th>
-    <th>Nombre / v.</th>
+    <th>Nombre</th>
     <th>URL - Implementación</th>
     <tr>
         <td rowspan="1">Swagger</td>
@@ -39,12 +39,12 @@ mongoose -- mongoose-paginate-v2 -- nodemailer -- handlebars -- bcrypt
     <th>URL - Implementación</th>
     <tr>
 	<td rowspan="1">Supertest</td>
-        <td>chai: ^4.3.10 / mocha: ^10.2.0 / supertest: ^6.3.3</td>
+        <td>chai / mocha / supertest</td>
         <td>http://localhost:8080/apidocs/</td>
     </tr>
     <tr>
         <td rowspan="1">Mock</td>
-        <td>@faker-js/faker: ^8.0.2</td>
+        <td>@faker-js/faker</td>
         <td>http://localhost:8080/api/mock/users</td>
     </tr>
 </table>
