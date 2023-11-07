@@ -40,7 +40,7 @@ mongoose -- mongoose-paginate-v2 -- nodemailer -- handlebars -- bcrypt
     <tr>
 	<td rowspan="1">Supertest</td>
         <td>chai / mocha / supertest</td>
-        <td>http://localhost:8080/apidocs/</td>
+        <td> npm install supertest </td>
     </tr>
     <tr>
         <td rowspan="1">Mock</td>
