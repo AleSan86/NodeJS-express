@@ -18,15 +18,15 @@ mongoose -- mongoose-paginate-v2 -- nodemailer -- handlebars -- bcrypt
 ## Extras
 <table>
     <th>Logger</th>
-    <th>Versión instalada</th>
+    <th>Nombre / v.</th>
     <th>URL - Implementación</th>
     <tr>
-        <td rowspan="2">Swagger</td>
-        <td>swagger-jsdoc: ^6.2.8 / swagger-ui-express: ^5.0.0</td>
+        <td rowspan="1">Swagger</td>
+        <td>swagger-jsdoc / swagger-ui-express</td>
         <td>http://localhost:8080/apidocs/</td>
     </tr>
     <tr>
-        <td rowspan="2">Winston</td>
+        <td rowspan="1">Winston</td>
         <td>^3.10.0</td>
         <td>embebido en código</td>
     </tr>
@@ -38,12 +38,12 @@ mongoose -- mongoose-paginate-v2 -- nodemailer -- handlebars -- bcrypt
     <th>Versión instalada</th>
     <th>URL - Implementación</th>
     <tr>
-	<td rowspan="2">Supertest</td>
+	<td rowspan="1">Supertest</td>
         <td>chai: ^4.3.10 / mocha: ^10.2.0 / supertest: ^6.3.3</td>
         <td>http://localhost:8080/apidocs/</td>
     </tr>
     <tr>
-        <td rowspan="2">Mock</td>
+        <td rowspan="1">Mock</td>
         <td>@faker-js/faker: ^8.0.2</td>
         <td>http://localhost:8080/api/mock/users</td>
     </tr>
