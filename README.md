@@ -5,21 +5,55 @@ Las peticiones se realizan a través de POSTMAN (anexados al proyecto).
 
 - [Instalación](#Instalación)
 - [Uso](#Uso)
-- [License](#license)
+- [Extras](#extras)
 
 ## Instalación
 ```
-npm install express - npm run start
+npm install express
 ```
 
-## Uso
-- Para correr test unitario usar: npm run test
-- Para correr test avanzado usar: npm run supertest
-- Para consultar la documentación, usar la ruta: http://localhost:8080/apidocs/
-- Para correr Mock test, usar la ruta: http://localhost:8080/api/mock/users
+### Otras librerias destacadas:
+mongoose -- mongoose-paginate-v2 -- nodemailer -- handlebars -- bcrypt
 
-### Se utilizaron las siguientes librerias:
-express--mongoose v2
-  
+## Extras
+<table>
+    <th>Logger</th>
+    <th>Versión instalada</th>
+    <th>URL - Implementación</th>
+    <tr>
+        <td rowspan="2">Swagger</td>
+        <td>swagger-jsdoc: ^6.2.8 / swagger-ui-express: ^5.0.0</td>
+        <td>http://localhost:8080/apidocs/</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Winston</td>
+        <td>^3.10.0</td>
+        <td>embebido en código</td>
+    </tr>
+</table>
+
+<table>
+<tr>
+    <th>Testing</th>
+    <th>Versión instalada</th>
+    <th>URL - Implementación</th>
+    <tr>
+	<td rowspan="2">Supertest</td>
+        <td>chai: ^4.3.10 / mocha: ^10.2.0 / supertest: ^6.3.3</td>
+        <td>http://localhost:8080/apidocs/</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Mock</td>
+        <td>@faker-js/faker: ^8.0.2</td>
+        <td>http://localhost:8080/api/mock/users</td>
+    </tr>
+</table>
+
+## Uso
+- npm run start
+- npm run test
+- npm run supertest
+- http://localhost:8080/apidocs/
+- http://localhost:8080/api/mock/users
 
 
