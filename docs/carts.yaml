@@ -1,0 +1,60 @@
+paths:
+  /api/carts/:
+    get:
+      summary: Obtiene todos los carritos disponibles de la BD.
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: Los carritos fueron obtenidos con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/Cart'
+        "400":
+          description: Se envió un dato no esperado.
+        "500":
+          description: Error no controlado en el servidor.
+
+  /api/carts/{uid}:
+    get:
+      summary: Obtiene un carrito de la BD por su ID.
+      tags:
+        - Carts
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del carrito que se desea buscar.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Carrito obtenido con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/Cart'
+        "400":
+          description: Se envio un dato no esperado.
+        "500":
+          description: Error no controlado en el servidor, no se pudo manejar el proceso.
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID autogenerado por Mongo.
+        products:
+          type: array
+          description: Listado de productos del carrito.
+      example:
+        _id: ObjectId("647fa8c9e46dbc5a20320181")
+        products: {}

@@ -1,0 +1,22 @@
+<div class="card m-auto col-8 mt-5">
+  <div class="card-header text-center alert alert-primary">
+    <h5 class="card-title">Bienvenido {{user.firstname}}</h5> 
+  </div>
+  <div class="card-body">
+      <div class="mb-3">
+        <label for="email" class="form-label">Estas registrado como: <b>{{user.email}}</b></label>
+      </div>
+      {{#if user.isAdmin}}
+        <a href='/auth/profileAdmin'>Ir a mi panel Admin<a>
+      {{/if}}
+      <div>
+        <h3>Este es tu carrito de compras</h3>
+        {{user.cart}}
+      </div>
+  </div>
+  <div class="card-footer text-center">
+    <div class="mb-2">
+      <a href="/auth/logout" type="button" class="btn btn-danger">Salir</a>
+    </div>
+  </div>
+</div>

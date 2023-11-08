@@ -1,16 +1,47 @@
 {
-  "name": "primer-pre-entrega",
+  "name": "Testing Unitario",
   "version": "1.0.0",
-  "description": "",
+  "description": "testing-unitario",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "nodemon index.js"
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js",
+    "test": "mocha test/testDAO/User.dao.test.js --timeout 10000",
+    "supertest": "mocha test/supertest.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "commander": "^11.0.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "uuid4": "^2.0.3"
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.3.0",
+    "mongoose-paginate-v2": "^1.7.23",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "passport": "^0.6.0",
+    "passport-github2": "^0.1.12",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "supertest": "^6.3.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "uploader": "^3.48.3",
+    "uuidv4": "^6.2.13",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0"
   }
 }

@@ -1,0 +1,84 @@
+paths:
+  /api/users/:
+    get:
+      summary: Obtiene todos los usuarios disponibles de la BD.
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Los usuarios fueron obtenidos con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/User'
+        "400":
+          description: Se envió un dato no esperado.
+        "500":
+          description: Error no controlado en el servidor.
+
+  /api/users/{uid}:
+    get:
+      summary: Obtiene un usuario de la BD por su ID.
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del usuario que se desea buscar.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Usuario obtenido con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/User'
+        "400":
+          description: Se envio un dato no esperado.
+        "500":
+          description: Error no controlado en el servidor, no se pudo manejar el proceso.
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID autogenerado por Mongo.
+        firstName: 
+          type: String
+          description: Nombre del usuario.
+        lastName: 
+          type: String
+          description: Apellido del usuario.
+        email: 
+          type: String
+          description: Dirección de correo electrónico del usuario.
+        age:
+          type: Number
+          description: Edad del usuario.
+        password: 
+          type: String
+          description: Password del usuario (se encripta con bcrypt).
+        cart: 
+          type: {}
+          description: Carrito inicial que se genera al crear el usuario.
+        role: 
+          type: String
+          description: Rol del usuario.
+      example:
+        _id: ObjectId("647fa8c9e46dbc5a20320181")
+        firstName: Nombre de prueba 1
+        lastName: Apellido de prueba 1
+        email: alesan86@gmail.com
+        age: 30
+        password: abcde123456
+        cart: {}
+        role: admin

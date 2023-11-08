@@ -1,0 +1,88 @@
+paths:
+  /api/products/:
+    get:
+      summary: Obtiene todos los productos disponibles de la BD.
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Los productos fueron obtenidos con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/Product'
+        "400":
+          description: Se envió un dato no esperado.
+        "500":
+          description: Error no controlado en el servidor.
+
+  /api/products/{uid}:
+    get:
+      summary: Obtiene un producto de la BD por su ID.
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del producto que se desea buscar.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Producto obtenido con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#components/schemas/Product'
+        "400":
+          description: Se envio un dato no esperado.
+        "500":
+          description: Error no controlado en el servidor, no se pudo manejar el proceso.
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID autogenerado por Mongo.
+        title: 
+          type: String
+          description: Nombre del producto.
+        description: 
+          type: String
+          description: Breve descripción del producto.
+        price: 
+          type: Number
+          description: Precio del producto.
+        thumbnail: 
+          type: String
+          description: Imagen ilustrativa del producto.
+        code: 
+          type: String
+          description: Código único del producto.
+        stock: 
+          type: Number
+          description: Cantidad disponible del producto.
+        status: 
+          type: Boolean
+          description: Estado de disponibilidad del producto.
+        category: 
+          type: String
+          description: Categori a ala que pertenece el producto.
+      example:
+        _id: ObjectId("647fa8c9e46dbc5a20320181")
+        title: Producto de prueba 1
+        description: Producto de prueba 1
+        price: 50.000
+        thumbnail: Sin imagen por defecto
+        code: abc123
+        stock: 100
+        status: 1
+        category: Electrodoméstico

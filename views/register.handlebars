@@ -1,0 +1,31 @@
+<div class="card m-auto col-8">
+  <div class="card-header text-center alert alert-primary">
+    Registrarse
+  </div>
+  <div class="card-body">
+    <form action="/auth/register" method="POST">
+      <div class="mb-3">
+          <label for="firstName" class="form-label">Nombre</label>
+          <input type="text"name="firstName"  class="form-control" id="firstName" placeholder="Nombre">
+      </div>
+      <div class="mb-3">
+          <label for="lastName" class="form-label">Apellido</label>
+          <input type="text"name="lastName"  class="form-control" id="lastName" placeholder="Apellido">
+      </div>
+      <div class="mb-3">
+          <label for="email" class="form-label">Em@il</label>
+          <input type="email" name="email"class="form-control" id="email" placeholder="email">
+      </div>
+      <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" name="password" class="form-control" id="password">
+      </div>
+      <input type="submit" class="btn btn-primary" value="¡Registrarme!">
+    </form>
+  </div>
+  <div class="card-footer text-center">
+    <div class="mb-2">
+      <a href="/auth/login" type="button" class="btn btn-warning">Ya tengo cuenta - ir a Login</a>
+    </div>
+  </div>
+</div>
