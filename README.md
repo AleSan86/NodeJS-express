@@ -1,5 +1,6 @@
 # NodeJS-express
-CRUD de productos y carrito de compra en NodeJs y express para el curso de BackEnd de CoderHouse.
+CRUD de productos, usuarios y carrito de compras en NodeJs/express para el curso de BackEnd de CoderHouse.
+
 Este proyecto solo cuenta con las vistas de Login, Resgister, Error y Profile.
 Las peticiones se realizan a través de POSTMAN (anexados al proyecto).
 
